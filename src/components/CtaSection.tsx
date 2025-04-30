@@ -1,9 +1,18 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Briefcase, User, Building } from "lucide-react";
+import SignupDialog from "@/components/SignupDialog";
 
 const CtaSection = () => {
+  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
+  const [userType, setUserType] = useState<"azienda" | "consulente" | "ente">("azienda");
+
+  const handleSignupClick = (type: "azienda" | "consulente" | "ente") => {
+    setUserType(type);
+    setSignupDialogOpen(true);
+  };
+  
   return (
     <section className="section-padding bg-sustanet-primary/10">
       <div className="container mx-auto">
@@ -19,6 +28,7 @@ const CtaSection = () => {
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12 animate-slide-in">
           <Button 
             className="w-full md:w-auto bg-sustanet-blue hover:bg-sustanet-blue/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            onClick={() => handleSignupClick("azienda")}
           >
             <Briefcase className="w-5 h-5" />
             Iscriviti come Azienda
@@ -26,6 +36,7 @@ const CtaSection = () => {
           
           <Button 
             className="w-full md:w-auto bg-sustanet-orange hover:bg-sustanet-orange/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            onClick={() => handleSignupClick("consulente")}
           >
             <User className="w-5 h-5" />
             Iscriviti come Consulente
@@ -33,6 +44,7 @@ const CtaSection = () => {
           
           <Button 
             className="w-full md:w-auto bg-sustanet-purple hover:bg-sustanet-purple/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            onClick={() => handleSignupClick("ente")}
           >
             <Building className="w-5 h-5" />
             Iscriviti come Ente di Certificazione
@@ -48,6 +60,13 @@ const CtaSection = () => {
           </Button>
         </div>
       </div>
+
+      {/* Signup Dialog */}
+      <SignupDialog 
+        open={signupDialogOpen} 
+        onOpenChange={setSignupDialogOpen} 
+        userType={userType} 
+      />
     </section>
   );
 };

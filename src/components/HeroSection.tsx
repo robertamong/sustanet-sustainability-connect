@@ -1,9 +1,18 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Briefcase, User, Building } from "lucide-react";
+import SignupDialog from "@/components/SignupDialog";
 
 const HeroSection = () => {
+  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
+  const [userType, setUserType] = useState<"azienda" | "consulente" | "ente">("azienda");
+
+  const handleSignupClick = (type: "azienda" | "consulente" | "ente") => {
+    setUserType(type);
+    setSignupDialogOpen(true);
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center gradient-bg section-padding pt-24">
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -24,6 +33,7 @@ const HeroSection = () => {
             <div className="space-y-4 md:flex items-center md:space-y-0 md:space-x-4 mb-8">
               <Button 
                 className="w-full md:w-auto bg-sustanet-blue hover:bg-sustanet-blue/80 text-white flex items-center justify-center gap-2 text-base font-medium py-6"
+                onClick={() => handleSignupClick("azienda")}
               >
                 <Briefcase className="w-5 h-5" />
                 Iscriviti come Azienda
@@ -31,6 +41,7 @@ const HeroSection = () => {
               
               <Button 
                 className="w-full md:w-auto bg-sustanet-orange hover:bg-sustanet-orange/80 text-white flex items-center justify-center gap-2 text-base font-medium py-6"
+                onClick={() => handleSignupClick("consulente")}
               >
                 <User className="w-5 h-5" />
                 Iscriviti come Consulente
@@ -38,6 +49,7 @@ const HeroSection = () => {
               
               <Button 
                 className="w-full md:w-auto bg-sustanet-purple hover:bg-sustanet-purple/80 text-white flex items-center justify-center gap-2 text-base font-medium py-6"
+                onClick={() => handleSignupClick("ente")}
               >
                 <Building className="w-5 h-5" />
                 Iscriviti come Ente di Certificazione
@@ -61,6 +73,13 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Signup Dialog */}
+      <SignupDialog 
+        open={signupDialogOpen} 
+        onOpenChange={setSignupDialogOpen} 
+        userType={userType} 
+      />
     </section>
   );
 };
