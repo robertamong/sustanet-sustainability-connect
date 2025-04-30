@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -95,7 +96,26 @@
     @apply border-border;
   }
 
+  html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8 lg:px-16;
+  }
+  
+  .animate-delayed {
+    opacity: 0;
+    animation-delay: var(--delay, 0ms);
+    animation-fill-mode: forwards;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #f5f9f5 0%, #DCEDC8 100%);
   }
 }
