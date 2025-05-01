@@ -4,10 +4,12 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,10 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value as 'it' | 'en');
+  };
 
   return (
     <header
@@ -36,29 +42,30 @@ const Navigation = () => {
 
         <div className="hidden md:flex items-center space-x-6">
           <a href="#problem" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            Problema
+            {t('nav.problem')}
           </a>
           <a href="#solution" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            Soluzione
+            {t('nav.solution')}
           </a>
           <a href="#features" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            Caratteristiche
+            {t('nav.features')}
           </a>
           <a href="#workflow" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            Come Funziona
+            {t('nav.workflow')}
           </a>
           <a href="#benefits" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            Vantaggi
+            {t('nav.benefits')}
           </a>
           <select
             className="bg-transparent text-sustanet-darkText border-none cursor-pointer"
-            defaultValue="it"
+            value={language}
+            onChange={handleLanguageChange}
           >
             <option value="it">ITA</option>
             <option value="en">EN</option>
           </select>
           <Button variant="outline" className="ml-2">
-            Accedi
+            {t('nav.login')}
           </Button>
         </div>
 
@@ -79,44 +86,47 @@ const Navigation = () => {
               className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Problema
+              {t('nav.problem')}
             </a>
             <a
               href="#solution"
               className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Soluzione
+              {t('nav.solution')}
             </a>
             <a
               href="#features"
               className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Caratteristiche
+              {t('nav.features')}
             </a>
             <a
               href="#workflow"
               className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Come Funziona
+              {t('nav.workflow')}
             </a>
             <a
               href="#benefits"
               className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Vantaggi
+              {t('nav.benefits')}
             </a>
             <select
               className="bg-transparent text-sustanet-darkText border border-gray-300 rounded p-2"
-              defaultValue="it"
+              value={language}
+              onChange={handleLanguageChange}
             >
               <option value="it">ITA</option>
               <option value="en">EN</option>
             </select>
-            <Button className="w-full">Accedi</Button>
+            <Button className="w-full">
+              {t('nav.login')}
+            </Button>
           </div>
         </div>
       )}
