@@ -63,15 +63,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Sustanet custom colors
+				// Sustanet custom colors - aggiornati con toni più eleganti e professionali
 				sustanet: {
-					primary: '#4CAF50',    // Green primary
-					secondary: '#DCEDC8',  // Light green secondary
-					blue: '#1976D2',       // Blue for company CTA
-					orange: '#FF9800',     // Orange for consultant CTA
-					purple: '#9C27B0',     // Purple for certification entity CTA
-					lightBg: '#F5F9F5',    // Light background
-					darkText: '#2E3A2E',   // Dark text
+					primary: '#3E8E69',    // Verde più tenue e professionale
+					secondary: '#E8F3E9',  // Verde chiaro leggermente desaturato
+					blue: '#4A769E',       // Blu più sobrio per aziende
+					orange: '#D38C67',     // Arancione più tenue per consulenti
+					purple: '#8B6D9C',     // Viola più elegante per enti di certificazione
+					lightBg: '#F8FAF8',    // Background leggerissimo
+					darkText: '#2E3A39',   // Testo scuro con leggera tonalità verde
 				},
 			},
 			borderRadius: {

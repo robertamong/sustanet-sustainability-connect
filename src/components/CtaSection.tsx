@@ -14,9 +14,9 @@ const CtaSection = () => {
   };
   
   return (
-    <section className="section-padding bg-sustanet-primary/10">
+    <section className="section-padding bg-sustanet-secondary/30">
       <div className="container mx-auto">
-        <div className="text-center mb-10 animate-fade-in">
+        <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-sustanet-darkText mb-4">
             🔄 Inizia subito. La sostenibilità non può aspettare.
           </h2>
@@ -27,7 +27,7 @@ const CtaSection = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12 animate-slide-in">
           <Button 
-            className="w-full md:w-auto bg-sustanet-blue hover:bg-sustanet-blue/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            className="w-full md:w-auto bg-sustanet-blue hover:bg-sustanet-blue/90 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8 shadow-md"
             onClick={() => handleSignupClick("azienda")}
           >
             <Briefcase className="w-5 h-5" />
@@ -35,7 +35,7 @@ const CtaSection = () => {
           </Button>
           
           <Button 
-            className="w-full md:w-auto bg-sustanet-orange hover:bg-sustanet-orange/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            className="w-full md:w-auto bg-sustanet-orange hover:bg-sustanet-orange/90 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8 shadow-md"
             onClick={() => handleSignupClick("consulente")}
           >
             <User className="w-5 h-5" />
@@ -43,7 +43,7 @@ const CtaSection = () => {
           </Button>
           
           <Button 
-            className="w-full md:w-auto bg-sustanet-purple hover:bg-sustanet-purple/80 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8"
+            className="w-full md:w-auto bg-sustanet-purple hover:bg-sustanet-purple/90 text-white flex items-center justify-center gap-2 text-lg font-medium py-6 px-8 shadow-md"
             onClick={() => handleSignupClick("ente")}
           >
             <Building className="w-5 h-5" />
@@ -51,11 +51,14 @@ const CtaSection = () => {
           </Button>
         </div>
 
-        <div className="text-center bg-white rounded-xl p-6 shadow-md max-w-xl mx-auto border border-sustanet-secondary animate-delayed animate-fade-in" style={{ "--delay": "300ms" } as React.CSSProperties}>
-          <div className="text-2xl mb-2">📆</div>
-          <h3 className="text-xl font-bold mb-2">Primo appuntamento gratuito</h3>
-          <p className="text-gray-700 mb-4">30 minuti gratuiti per tutte le aziende che si iscrivono</p>
-          <Button variant="outline" className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white">
+        <div className="text-center bg-white rounded-xl p-8 shadow-sm max-w-xl mx-auto border border-gray-100 animate-delayed animate-fade-in" style={{ "--delay": "300ms" } as React.CSSProperties}>
+          <div className="text-2xl mb-3">📆</div>
+          <h3 className="text-xl font-bold mb-3 text-sustanet-darkText">Primo appuntamento gratuito</h3>
+          <p className="text-gray-600 mb-5">30 minuti gratuiti per tutte le aziende che si iscrivono</p>
+          <Button 
+            variant="outline" 
+            className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white transition-colors duration-300"
+          >
             Prenota ora
           </Button>
         </div>
