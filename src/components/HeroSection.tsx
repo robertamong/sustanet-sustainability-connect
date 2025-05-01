@@ -61,16 +61,6 @@ const HeroSection = () => {
               Una piattaforma, tre esperienze personalizzate.
             </p>
           </div>
-          
-          <div className="w-full md:w-1/2 flex justify-center animate-slide-in">
-            <div className="relative w-full max-w-md aspect-square">
-              <div className="absolute inset-0 rounded-full bg-sustanet-primary/10 animate-pulse"></div>
-              <div className="absolute inset-0 border-4 border-sustanet-primary/20 rounded-full rotate-45"></div>
-              <div className="absolute inset-4 bg-sustanet-secondary/30 rounded-full flex items-center justify-center">
-                <Logo size="lg" showText={false} iconClassName="text-sustanet-primary" />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 

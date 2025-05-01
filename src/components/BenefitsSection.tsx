@@ -1,11 +1,9 @@
 
 import React from "react";
-import { Building, Briefcase, User } from "lucide-react";
 
 const BenefitsSection = () => {
   const targetBenefits = [
     {
-      icon: <Briefcase className="w-10 h-10" />,
       color: "bg-sustanet-blue",
       title: "🏢 Aziende",
       benefits: [
@@ -16,7 +14,6 @@ const BenefitsSection = () => {
       delay: "0ms",
     },
     {
-      icon: <User className="w-10 h-10" />,
       color: "bg-sustanet-orange",
       title: "👩‍💼 Consulenti",
       benefits: [
@@ -27,7 +24,6 @@ const BenefitsSection = () => {
       delay: "200ms",
     },
     {
-      icon: <Building className="w-10 h-10" />,
       color: "bg-sustanet-purple",
       title: "🏛 Enti di certificazione",
       benefits: [
@@ -56,10 +52,7 @@ const BenefitsSection = () => {
               className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 animate-delayed animate-fade-in"
               style={{ "--delay": target.delay } as React.CSSProperties}
             >
-              <div className={`${target.color} p-4 flex items-center gap-3`}>
-                <div className="bg-white rounded-full p-2 text-white">
-                  {target.icon}
-                </div>
+              <div className={`${target.color} p-4 text-center`}>
                 <h3 className="text-xl font-bold text-white">{target.title}</h3>
               </div>
               <div className="p-6">

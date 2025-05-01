@@ -27,12 +27,6 @@ const FeaturesSection = () => {
       description: "Controllo in tempo reale con alert e notifiche personalizzate",
       delay: "300ms",
     },
-    {
-      icon: "🧾",
-      title: "Supporto alla certificazione",
-      description: "Accompagnamento alla certificazione EPD con supporto ai rapporti con i verificatori",
-      delay: "400ms",
-    },
   ];
 
   return (
@@ -44,7 +38,7 @@ const FeaturesSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index} 
