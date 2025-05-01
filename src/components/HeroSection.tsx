@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Briefcase, User, Building } from "lucide-react";
 import SignupDialog from "@/components/SignupDialog";
+import Logo from "./Logo";
 
 const HeroSection = () => {
   const [signupDialogOpen, setSignupDialogOpen] = useState(false);
@@ -23,9 +24,9 @@ const HeroSection = () => {
       <div className="container mx-auto z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-sustanet-darkText mb-6">
-              <span className="text-sustanet-primary">Sustanet</span>
-            </h1>
+            <div className="mb-6">
+              <Logo size="lg" className="inline-block" />
+            </div>
             <p className="text-xl md:text-2xl font-medium text-sustanet-darkText mb-8 leading-relaxed">
               Il primo marketplace dedicato alla consulenza di sostenibilità che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work".
             </p>
@@ -63,11 +64,10 @@ const HeroSection = () => {
           
           <div className="w-full md:w-1/2 flex justify-center animate-slide-in">
             <div className="relative w-full max-w-md aspect-square">
-              {/* This would be replaced with an actual image in a real implementation */}
               <div className="absolute inset-0 rounded-full bg-sustanet-primary/10 animate-pulse"></div>
               <div className="absolute inset-0 border-4 border-sustanet-primary/20 rounded-full rotate-45"></div>
               <div className="absolute inset-4 bg-sustanet-secondary/30 rounded-full flex items-center justify-center">
-                <div className="text-8xl font-bold text-sustanet-primary">S</div>
+                <Logo size="lg" showText={false} iconClassName="text-sustanet-primary" />
               </div>
             </div>
           </div>

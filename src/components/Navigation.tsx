@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,8 +30,7 @@ const Navigation = () => {
       <nav className="container mx-auto flex items-center justify-between px-4 md:px-8">
         <div className="flex items-center">
           <a href="#" className="flex items-center text-sustanet-darkText">
-            {/* Logo would go here */}
-            <span className="text-xl font-bold text-sustanet-primary">Sustanet</span>
+            <Logo size={isScrolled ? "sm" : "md"} />
           </a>
         </div>
 
