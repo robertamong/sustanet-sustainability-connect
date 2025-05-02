@@ -35,6 +35,7 @@ const Logo = ({
       {showText && (
         <span className={cn("font-bold tracking-tight flex items-center", sizeClasses[size], textClassName)}>
           <span className="text-sustanet-primary">Susta</span>
+          <span className="text-sustanet-primary">ne</span>
           <span className="text-sustanet-primary">
             <Sprout 
               size={iconSizes[size] * 0.8} 
@@ -42,8 +43,6 @@ const Logo = ({
               strokeWidth={2} 
             />
           </span>
-          <span className="text-sustanet-darkText">e</span>
-          <span className="text-sustanet-darkText">t</span>
         </span>
       )}
     </div>

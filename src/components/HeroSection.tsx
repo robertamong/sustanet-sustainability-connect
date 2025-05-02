@@ -76,9 +76,8 @@ const HeroSection = () => {
               </Button>
             </div>
             
-            <div className="text-center bg-white rounded-xl p-8 shadow-sm max-w-xl mx-auto border border-gray-100 animate-delayed animate-fade-in mt-8" style={{ "--delay": "300ms" } as React.CSSProperties}>
-              <h3 className="text-xl font-bold mb-3 text-sustanet-darkText">{t('cta.appointment.title')}</h3>
-              <p className="text-gray-600 mb-5">{t('cta.appointment.description')}</p>
+            <div className="text-center bg-white rounded-xl p-8 shadow-sm mx-auto border border-gray-100 animate-delayed animate-fade-in mt-8 max-w-md" style={{ "--delay": "300ms" } as React.CSSProperties}>
+              <h3 className="text-xl font-bold mb-5 text-sustanet-darkText">{t('cta.appointment.title')}</h3>
               
               <div className="flex justify-center">
                 <Popover>
