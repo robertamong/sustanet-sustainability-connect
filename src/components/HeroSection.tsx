@@ -1,17 +1,36 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Briefcase, User, Building } from "lucide-react";
+import { Briefcase, User, Building, CalendarIcon } from "lucide-react";
 import SignupDialog from "@/components/SignupDialog";
 import Logo from "./Logo";
+import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 const HeroSection = () => {
   const [signupDialogOpen, setSignupDialogOpen] = useState(false);
   const [userType, setUserType] = useState<"azienda" | "consulente" | "ente">("azienda");
+  const [date, setDate] = useState<Date>();
+  const { t } = useLanguage();
 
   const handleSignupClick = (type: "azienda" | "consulente" | "ente") => {
     setUserType(type);
     setSignupDialogOpen(true);
+  };
+
+  const handleDateSelect = (selectedDate: Date | undefined) => {
+    setDate(selectedDate);
+    if (selectedDate) {
+      // Here you could trigger an API call to book the appointment
+      console.log(`Appointment booked for ${format(selectedDate, "PPP")}`);
+    }
   };
 
   return (
@@ -28,7 +47,7 @@ const HeroSection = () => {
               <Logo size="lg" className="inline-block" />
             </div>
             <p className="text-xl md:text-2xl font-medium text-sustanet-darkText mb-8 leading-relaxed">
-              Il primo marketplace dedicato alla consulenza di sostenibilità che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work".
+              {t('hero.introText')}
             </p>
             
             <div className="space-y-4 md:flex items-center md:space-y-0 md:space-x-4 mb-8">
@@ -37,7 +56,7 @@ const HeroSection = () => {
                 onClick={() => handleSignupClick("azienda")}
               >
                 <Briefcase className="w-5 h-5" />
-                Iscriviti come Azienda
+                {t('hero.signupCompany')}
               </Button>
               
               <Button 
@@ -45,7 +64,7 @@ const HeroSection = () => {
                 onClick={() => handleSignupClick("consulente")}
               >
                 <User className="w-5 h-5" />
-                Iscriviti come Consulente
+                {t('hero.signupConsultant')}
               </Button>
               
               <Button 
@@ -53,12 +72,45 @@ const HeroSection = () => {
                 onClick={() => handleSignupClick("ente")}
               >
                 <Building className="w-5 h-5" />
-                Iscriviti come Ente di Certificazione
+                {t('hero.signupCertification')}
               </Button>
             </div>
             
-            <p className="text-lg text-sustanet-darkText/80 italic">
-              Una piattaforma, tre esperienze personalizzate.
+            <div className="text-center bg-white rounded-xl p-8 shadow-sm max-w-xl mx-auto border border-gray-100 animate-delayed animate-fade-in mt-8" style={{ "--delay": "300ms" } as React.CSSProperties}>
+              <h3 className="text-xl font-bold mb-3 text-sustanet-darkText">{t('cta.appointment.title')}</h3>
+              <p className="text-gray-600 mb-5">{t('cta.appointment.description')}</p>
+              
+              <div className="flex justify-center">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button 
+                      variant="outline" 
+                      className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white transition-colors duration-300 flex items-center gap-2 mx-auto"
+                    >
+                      <CalendarIcon className="h-4 w-4" />
+                      {date ? format(date, "PPP") : t('cta.book')}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="center">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={handleDateSelect}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                      disabled={(date) => 
+                        date < new Date() || // Past dates
+                        date.getDay() === 0 || // Sundays
+                        date.getDay() === 6    // Saturdays
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+            
+            <p className="text-lg text-sustanet-darkText/80 italic mt-4 text-center">
+              {t('hero.platformDescription')}
             </p>
           </div>
         </div>

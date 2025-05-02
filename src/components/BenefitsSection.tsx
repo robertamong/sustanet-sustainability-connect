@@ -1,35 +1,38 @@
 
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BenefitsSection = () => {
+  const { t } = useLanguage();
+  
   const targetBenefits = [
     {
       color: "bg-sustanet-blue",
-      title: "🏢 Aziende",
+      title: "🏢 " + t('benefits.companies.title'),
       benefits: [
-        "Risparmio di tempo e costi (fino a 10.000€/progetto)",
-        "Accesso a consulenti verificati e matching istantaneo",
-        "Nessun errore iniziale: onboarding tecnico accurato"
+        t('benefits.companies.benefit1'),
+        t('benefits.companies.benefit2'),
+        t('benefits.companies.benefit3')
       ],
       delay: "0ms",
     },
     {
       color: "bg-sustanet-orange",
-      title: "👩‍💼 Consulenti",
+      title: "👩‍💼 " + t('benefits.consultants.title'),
       benefits: [
-        "Opportunità già profilate, senza spese di marketing",
-        "Caricamento CV e selezione dei settori di competenza",
-        "Area personale, rating, e gestione progetti semplificata"
+        t('benefits.consultants.benefit1'),
+        t('benefits.consultants.benefit2'),
+        t('benefits.consultants.benefit3')
       ],
       delay: "200ms",
     },
     {
       color: "bg-sustanet-purple",
-      title: "🏛 Enti di certificazione",
+      title: "🏛 " + t('benefits.certification.title'),
       benefits: [
-        "Coinvolgimento anticipato nel flusso",
-        "Dossier clienti ordinati e standardizzati",
-        "Sincronizzazione automatica delle fasi"
+        t('benefits.certification.benefit1'),
+        t('benefits.certification.benefit2'),
+        t('benefits.certification.benefit3')
       ],
       delay: "400ms",
     }
@@ -40,9 +43,9 @@ const BenefitsSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-sustanet-darkText mb-4">
-            Vantaggi per ciascun target
+            {t('benefits.title')}
           </h2>
-          <p className="text-lg text-gray-600">Scopri i benefici specifici per il tuo ruolo</p>
+          <p className="text-lg text-gray-600">{t('benefits.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

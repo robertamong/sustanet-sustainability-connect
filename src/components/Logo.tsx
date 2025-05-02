@@ -32,17 +32,18 @@ const Logo = ({
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <span className={cn("text-sustanet-primary", iconClassName)}>
-        <Sprout 
-          size={iconSizes[size]} 
-          className="stroke-current" 
-          strokeWidth={2} 
-        />
-      </span>
       {showText && (
-        <span className={cn("font-bold tracking-tight", sizeClasses[size], textClassName)}>
+        <span className={cn("font-bold tracking-tight flex items-center", sizeClasses[size], textClassName)}>
           <span className="text-sustanet-primary">Susta</span>
-          <span className="text-sustanet-darkText">net</span>
+          <span className="text-sustanet-primary">
+            <Sprout 
+              size={iconSizes[size] * 0.8} 
+              className="inline-block" 
+              strokeWidth={2} 
+            />
+          </span>
+          <span className="text-sustanet-darkText">e</span>
+          <span className="text-sustanet-darkText">t</span>
         </span>
       )}
     </div>

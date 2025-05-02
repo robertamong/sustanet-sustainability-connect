@@ -43,6 +43,27 @@ const translations: Translations = {
     it: 'Accedi',
     en: 'Login',
   },
+  // Hero section
+  'hero.introText': {
+    it: 'Il primo marketplace dedicato alla redazione di EPD che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work".',
+    en: 'The first marketplace dedicated to EPD drafting that connects companies, consultants, and certification bodies, with a "zero re-work" approach.',
+  },
+  'hero.signupCompany': {
+    it: 'Iscriviti come Azienda',
+    en: 'Sign up as Company',
+  },
+  'hero.signupConsultant': {
+    it: 'Iscriviti come Consulente',
+    en: 'Sign up as Consultant',
+  },
+  'hero.signupCertification': {
+    it: 'Iscriviti come Ente di Certificazione',
+    en: 'Sign up as Certification Body',
+  },
+  'hero.platformDescription': {
+    it: 'Un marketplace, tre esperienze personalizzate.',
+    en: 'One marketplace, three personalized experiences.',
+  },
   // Features section
   'features.title': {
     it: 'Cosa offre la piattaforma',
@@ -80,14 +101,112 @@ const translations: Translations = {
     it: 'Controllo in tempo reale con alert e notifiche personalizzate',
     en: 'Real-time control with customized alerts and notifications',
   },
+  // Workflow Section
+  'workflow.title': {
+    it: 'Come funziona',
+    en: 'How it works',
+  },
+  'workflow.subtitle': {
+    it: 'Il processo in quattro semplici passaggi',
+    en: 'The process in four simple steps',
+  },
+  'workflow.step1.title': {
+    it: 'Registrati e compila il profilo',
+    en: 'Register and complete your profile',
+  },
+  'workflow.step1.description': {
+    it: 'Scheda guidata secondo il tuo ruolo',
+    en: 'Guided form according to your role',
+  },
+  'workflow.step2.title': {
+    it: 'Onboarding personalizzato',
+    en: 'Personalized onboarding',
+  },
+  'workflow.step2.description': {
+    it: 'Per individuare la tipologia di studio LCA/EPD che risponde alle proprie esigenze',
+    en: 'To identify the type of LCA/EPD study that meets your needs',
+  },
+  'workflow.step3.title': {
+    it: 'Match automatico & firma contratto',
+    en: 'Automatic match & contract signature',
+  },
+  'workflow.step3.description': {
+    it: 'Nessun contatto diretto fino alla selezione',
+    en: 'No direct contact until selection',
+  },
+  'workflow.step4.title': {
+    it: 'Lavora in uno spazio digitale condiviso',
+    en: 'Work in a shared digital space',
+  },
+  'workflow.step4.description': {
+    it: 'Con scadenze, documenti, chat e tracciamento',
+    en: 'With deadlines, documents, chat and tracking',
+  },
+  // Benefits section
+  'benefits.title': {
+    it: 'Vantaggi per ciascun target',
+    en: 'Benefits for each target',
+  },
+  'benefits.subtitle': {
+    it: 'Scopri i benefici specifici per il tuo ruolo',
+    en: 'Discover the specific benefits for your role',
+  },
+  'benefits.companies.title': {
+    it: 'Aziende',
+    en: 'Companies',
+  },
+  'benefits.companies.benefit1': {
+    it: 'Risparmio di tempo e costi',
+    en: 'Time and cost savings',
+  },
+  'benefits.companies.benefit2': {
+    it: 'Accesso a consulenti verificati e matching istantaneo',
+    en: 'Access to verified consultants and instant matching',
+  },
+  'benefits.companies.benefit3': {
+    it: 'Nessun errore iniziale: onboarding tecnico accurato',
+    en: 'No initial errors: accurate technical onboarding',
+  },
+  'benefits.consultants.title': {
+    it: 'Consulenti',
+    en: 'Consultants',
+  },
+  'benefits.consultants.benefit1': {
+    it: 'Opportunità già profilate, senza spese di marketing',
+    en: 'Pre-profiled opportunities, without marketing expenses',
+  },
+  'benefits.consultants.benefit2': {
+    it: 'Caricamento CV e selezione dei settori di competenza',
+    en: 'CV upload and selection of areas of expertise',
+  },
+  'benefits.consultants.benefit3': {
+    it: 'Area personale, rating, e gestione progetti semplificata',
+    en: 'Personal area, rating, and simplified project management',
+  },
+  'benefits.certification.title': {
+    it: 'Enti di certificazione',
+    en: 'Certification bodies',
+  },
+  'benefits.certification.benefit1': {
+    it: 'Coinvolgimento anticipato nel flusso',
+    en: 'Early involvement in the flow',
+  },
+  'benefits.certification.benefit2': {
+    it: 'Dossier clienti ordinati e standardizzati',
+    en: 'Organized and standardized client dossiers',
+  },
+  'benefits.certification.benefit3': {
+    it: 'Sincronizzazione automatica delle fasi',
+    en: 'Automatic synchronization of phases',
+  },
   // CTA Section
   'cta.title': {
     it: 'Inizia subito. La sostenibilità non può aspettare.',
     en: 'Start now. Sustainability cannot wait.',
   },
   'cta.subtitle': {
-    it: 'Unisciti alla piattaforma che sta rivoluzionando il modo in cui aziende, consulenti ed enti di certificazione collaborano per un futuro sostenibile.',
-    en: 'Join the platform that is revolutionizing how companies, consultants, and certification bodies collaborate for a sustainable future.',
+    it: 'Unisciti al marketplace che sta rivoluzionando il modo in cui aziende, consulenti ed enti di certificazione collaborano per un futuro sostenibile.',
+    en: 'Join the marketplace that is revolutionizing how companies, consultants, and certification bodies collaborate for a sustainable future.',
   },
   'cta.appointment.title': {
     it: 'Prenota il tuo primo appuntamento gratuito',

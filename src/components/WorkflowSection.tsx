@@ -1,31 +1,34 @@
 
 import React from "react";
 import { FileText, ListChecks, MessageSquare, SquareStack } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WorkflowSection = () => {
+  const { t } = useLanguage();
+  
   const steps = [
     {
       icon: <ListChecks className="w-10 h-10 text-sustanet-primary" />,
-      title: "Registrati e compila il profilo",
-      description: "Scheda guidata secondo il tuo ruolo",
+      title: t('workflow.step1.title'),
+      description: t('workflow.step1.description'),
       delay: "0ms",
     },
     {
       icon: <FileText className="w-10 h-10 text-sustanet-primary" />,
-      title: "Ricevi o pubblica progetti",
-      description: "In base a criteri di qualità, competenza, disponibilità",
+      title: t('workflow.step2.title'),
+      description: t('workflow.step2.description'),
       delay: "200ms",
     },
     {
       icon: <MessageSquare className="w-10 h-10 text-sustanet-primary" />,
-      title: "Match automatico & firma contratto",
-      description: "Nessun contatto diretto fino alla selezione",
+      title: t('workflow.step3.title'),
+      description: t('workflow.step3.description'),
       delay: "400ms",
     },
     {
       icon: <SquareStack className="w-10 h-10 text-sustanet-primary" />,
-      title: "Lavora in uno spazio digitale condiviso",
-      description: "Con scadenze, documenti, chat e tracciamento",
+      title: t('workflow.step4.title'),
+      description: t('workflow.step4.description'),
       delay: "600ms",
     },
   ];
@@ -35,9 +38,9 @@ const WorkflowSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-sustanet-darkText mb-4">
-            Come funziona
+            {t('workflow.title')}
           </h2>
-          <p className="text-lg text-gray-600">Il processo in quattro semplici passaggi</p>
+          <p className="text-lg text-gray-600">{t('workflow.subtitle')}</p>
         </div>
 
         <div className="relative">
