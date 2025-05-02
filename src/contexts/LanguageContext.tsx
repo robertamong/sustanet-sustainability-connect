@@ -69,7 +69,7 @@ const translations: Translations = {
     en: 'Automatic Data Import',
   },
   'features.import.description': {
-    it: 'Semplificazione del processo di acquisizione dati d'inventario per EPD',
+    it: "Semplificazione del processo di acquisizione dati d'inventario per EPD",
     en: 'Simplified inventory data acquisition process for EPD',
   },
   'features.monitoring.title': {
