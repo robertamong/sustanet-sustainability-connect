@@ -45,7 +45,7 @@ const CtaSection = () => {
               <PopoverTrigger asChild>
                 <Button 
                   variant="outline" 
-                  className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white transition-colors duration-300 flex items-center gap-2"
+                  className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white transition-colors duration-300 flex items-center gap-2 mx-auto"
                 >
                   <CalendarIcon className="h-4 w-4" />
                   {date ? format(date, "PPP") : t('cta.book')}

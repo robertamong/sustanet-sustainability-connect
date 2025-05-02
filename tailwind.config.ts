@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,15 +62,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Sustanet custom colors - aggiornati con toni più eleganti e professionali
+				// Sustanet custom colors - updated for natural greens and modern tech colors
 				sustanet: {
-					primary: '#3E8E69',    // Verde più tenue e professionale
-					secondary: '#E8F3E9',  // Verde chiaro leggermente desaturato
-					blue: '#4A769E',       // Blu più sobrio per aziende
-					orange: '#D38C67',     // Arancione più tenue per consulenti
-					purple: '#8B6D9C',     // Viola più elegante per enti di certificazione
-					lightBg: '#F8FAF8',    // Background leggerissimo
-					darkText: '#2E3A39',   // Testo scuro con leggera tonalità verde
+					primary: '#3B7A57',    // Dark natural green (Forest green)
+					secondary: '#E8F5E9',  // Light green background (Natural, airy)
+					blue: '#4285F4',       // Modern Google blue (Tech innovation)
+					orange: '#FF5722',     // Deep orange (Modern accent)
+					purple: '#7E57C2',     // Modern purple (Innovation)
+					lightBg: '#F9FBF9',    // Very light green tint background (High clarity)
+					darkText: '#263238',   // Deep blue-grey (Clear readability)
 				},
 			},
 			borderRadius: {
