@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -71,11 +71,13 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
+          <div className="mb-4 md:mb-0 flex items-center space-x-2">
+            <Globe size={16} className="text-gray-300" />
             <select
               className="bg-transparent text-gray-300 border border-gray-700 rounded p-2"
               value={language}
               onChange={handleLanguageChange}
+              aria-label="Select language"
             >
               <option value="it">ITA</option>
               <option value="en">EN</option>

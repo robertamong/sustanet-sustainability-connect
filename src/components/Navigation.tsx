@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
@@ -56,14 +56,18 @@ const Navigation = () => {
           <a href="#benefits" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
             {t('nav.benefits')}
           </a>
-          <select
-            className="bg-transparent text-sustanet-darkText border-none cursor-pointer"
-            value={language}
-            onChange={handleLanguageChange}
-          >
-            <option value="it">ITA</option>
-            <option value="en">EN</option>
-          </select>
+          <div className="flex items-center space-x-1 text-sustanet-darkText">
+            <Globe size={16} />
+            <select
+              className="bg-transparent text-sustanet-darkText border-none cursor-pointer"
+              value={language}
+              onChange={handleLanguageChange}
+              aria-label="Select language"
+            >
+              <option value="it">ITA</option>
+              <option value="en">EN</option>
+            </select>
+          </div>
           <Button variant="outline" className="ml-2">
             {t('nav.login')}
           </Button>
@@ -116,14 +120,17 @@ const Navigation = () => {
             >
               {t('nav.benefits')}
             </a>
-            <select
-              className="bg-transparent text-sustanet-darkText border border-gray-300 rounded p-2"
-              value={language}
-              onChange={handleLanguageChange}
-            >
-              <option value="it">ITA</option>
-              <option value="en">EN</option>
-            </select>
+            <div className="flex items-center border border-gray-300 rounded p-2">
+              <Globe size={16} className="mr-2" />
+              <select
+                className="bg-transparent text-sustanet-darkText border-none w-full"
+                value={language}
+                onChange={handleLanguageChange}
+              >
+                <option value="it">ITA</option>
+                <option value="en">EN</option>
+              </select>
+            </div>
             <Button className="w-full">
               {t('nav.login')}
             </Button>
