@@ -57,7 +57,7 @@ const Navigation = () => {
             </select>
           </div>
           <Button variant="outline" className="ml-2">
-            {t('nav.login')}
+            {t('nav.priorityAccess')}
           </Button>
         </div>
 
@@ -92,7 +92,7 @@ const Navigation = () => {
               </select>
             </div>
             <Button className="w-full">
-              {t('nav.login')}
+              {t('nav.priorityAccess')}
             </Button>
           </div>
         </div>
