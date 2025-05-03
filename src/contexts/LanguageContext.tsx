@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Define the context type
@@ -100,7 +99,7 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.login': 'Login',
     'nav.priorityAccess': 'Priority Access',
-    'hero.introText': 'The first integrated platform for the structured management of the entire EPD drafting process that connects companies, consultants and certification bodies, with a "zero re-work" approach',
+    'hero.introText': 'The first integrated platform for structured management of the entire EPD writing process that connects companies, consultants and certification bodies, with "zero re-work" approach',
     'hero.waitingListCta': 'Yes, I want priority access',
     'hero.platformDescription': 'The dashboard that connects, simplifies and speeds up the certification process.',
     'features.title': 'Platform Features',

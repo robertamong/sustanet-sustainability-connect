@@ -7,7 +7,7 @@ import WaitingListDialog from "./WaitingListDialog";
 
 const HeroSection = () => {
   const [waitingListDialogOpen, setWaitingListDialogOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const handleWaitingListClick = () => {
     setWaitingListDialogOpen(true);
@@ -27,7 +27,9 @@ const HeroSection = () => {
               <Logo size="lg" className="inline-block" />
             </div>
             <p className="text-xl md:text-2xl font-medium text-sustanet-darkText mb-8 leading-relaxed">
-              La prima piattaforma integrata per la gestione strutturata dell'intero processo di redazione dell'EPD che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work"
+              {language === "it" 
+                ? "La prima piattaforma integrata per la gestione strutturata dell'intero processo di redazione dell'EPD che connette aziende, consulenti ed enti di certificazione, con approccio \"zero re-work\""
+                : "The first integrated platform for structured management of the entire EPD writing process that connects companies, consultants and certification bodies, with \"zero re-work\" approach"}
             </p>
             
             <div className="mb-8">
@@ -56,3 +58,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
