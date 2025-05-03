@@ -1,300 +1,158 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-
-type Language = 'it' | 'en';
-
-export type Translations = {
-  [key: string]: {
-    it: string;
-    en: string;
-  };
-}
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
+// Define the context type
+interface LanguageContextProps {
+  language: 'it' | 'en';
+  setLanguage: (language: 'it' | 'en') => void;
   t: (key: string) => string;
-  translations: Translations;
 }
 
-const translations: Translations = {
-  // Navigation
-  'nav.problem': {
-    it: 'Problema',
-    en: 'Problem',
+// Create the context with a default value
+const LanguageContext = createContext<LanguageContextProps>({
+  language: 'it', // Default language is Italian
+  setLanguage: () => {},
+  t: (key: string) => key, // Default translation function (returns the key itself)
+});
+
+// Define language translations
+const translations = {
+  it: {
+    'nav.about': 'Chi siamo',
+    'nav.features': 'Funzionalità',
+    'nav.workflow': 'Come Funziona',
+    'nav.benefits': 'Vantaggi',
+    'nav.contact': 'Contatti',
+    'hero.introText': 'Il primo marketplace dedicato alla redazione di EPD che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work"',
+    'hero.waitingListCta': 'Sì, voglio accesso prioritario',
+    'hero.signupCompany': 'Iscriviti come azienda',
+    'hero.signupConsultant': 'Iscriviti come consulente',
+    'hero.signupCertification': 'Iscriviti come ente',
+    'hero.platformDescription': 'La dashboard che connette, semplifica e velocizza il processo di certificazione.',
+    'cta.appointment.title': 'Prenota ora il tuo primo appuntamento gratuito',
+    'cta.book': 'Prenota ora',
+    'features.title': 'Funzionalità',
+    'workflow.title': 'Come Funziona',
+    'benefits.title': 'Vantaggi',
+    'benefits.forCompanies': 'Per le aziende',
+    'benefits.forConsultants': 'Per i consulenti',
+    'benefits.forCertification': 'Per gli enti',
+    'footer.slogan': 'Un unico ambiente per connettere aziende, consulenti ed enti di certificazione',
+    'footer.about': 'Chi siamo',
+    'footer.story': 'La nostra storia',
+    'footer.team': 'Il team',
+    'footer.partners': 'Partner',
+    'footer.contacts': 'Contatti',
+    'footer.support': 'Supporto',
+    'footer.legal': 'Legale',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Termini e Condizioni',
+    'footer.cookies': 'Cookie Policy',
+    'footer.rights': 'Tutti i diritti riservati.',
+    'waitingList.title': 'Iscriviti alla lista d\'attesa',
+    'waitingList.description': 'Inserisci i tuoi dati per avere accesso prioritario alla piattaforma',
+    'waitingList.firstName': 'Nome*',
+    'waitingList.lastName': 'Cognome*',
+    'waitingList.email': 'Email*',
+    'waitingList.organizationType': 'Tipo di organizzazione*',
+    'waitingList.organizationName': 'Nome organizzazione',
+    'waitingList.firstNamePlaceholder': 'Inserisci il tuo nome',
+    'waitingList.lastNamePlaceholder': 'Inserisci il tuo cognome',
+    'waitingList.emailPlaceholder': 'esempio@dominio.it',
+    'waitingList.selectOrganizationType': 'Seleziona il tipo di organizzazione',
+    'waitingList.company': 'Azienda',
+    'waitingList.consultant': 'Consulente',
+    'waitingList.certificationBody': 'Ente di Certificazione',
+    'waitingList.organizationNamePlaceholder': 'Inserisci il nome dell\'organizzazione',
+    'waitingList.cancel': 'Annulla',
+    'waitingList.submit': 'Iscriviti',
   },
-  'nav.solution': {
-    it: 'Soluzione',
-    en: 'Solution',
-  },
-  'nav.features': {
-    it: 'Caratteristiche',
-    en: 'Features',
-  },
-  'nav.workflow': {
-    it: 'Come Funziona',
-    en: 'How It Works',
-  },
-  'nav.benefits': {
-    it: 'Vantaggi',
-    en: 'Benefits',
-  },
-  'nav.login': {
-    it: 'Accedi',
-    en: 'Login',
-  },
-  // Hero section
-  'hero.introText': {
-    it: 'Il primo marketplace dedicato alla redazione di EPD che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work".',
-    en: 'The first marketplace dedicated to EPD drafting that connects companies, consultants, and certification bodies, with a "zero re-work" approach.',
-  },
-  'hero.signupCompany': {
-    it: 'Iscriviti come Azienda',
-    en: 'Sign up as Company',
-  },
-  'hero.signupConsultant': {
-    it: 'Iscriviti come Consulente',
-    en: 'Sign up as Consultant',
-  },
-  'hero.signupCertification': {
-    it: 'Iscriviti come Ente di Certificazione',
-    en: 'Sign up as Certification Body',
-  },
-  'hero.platformDescription': {
-    it: 'Un marketplace, tre esperienze personalizzate.',
-    en: 'One marketplace, three personalized experiences.',
-  },
-  // Features section
-  'features.title': {
-    it: 'Cosa offre la piattaforma',
-    en: 'Platform Features',
-  },
-  'features.onboarding.title': {
-    it: 'Onboarding personalizzato',
-    en: 'Personalized Onboarding',
-  },
-  'features.onboarding.description': {
-    it: 'Percorso guidato per aziende, consulenti e enti di certificazione',
-    en: 'Guided path for companies, consultants and certification bodies',
-  },
-  'features.ai.title': {
-    it: 'AI Matching',
-    en: 'AI Matching',
-  },
-  'features.ai.description': {
-    it: 'Algoritmo avanzato tra richieste e competenze verificate',
-    en: 'Advanced algorithm matching requests with verified skills',
-  },
-  'features.import.title': {
-    it: 'Import automatico dati',
-    en: 'Automatic Data Import',
-  },
-  'features.import.description': {
-    it: "Semplificazione del processo di acquisizione dati d'inventario per EPD",
-    en: 'Simplified inventory data acquisition process for EPD',
-  },
-  'features.monitoring.title': {
-    it: 'Monitoraggio progetto',
-    en: 'Project Monitoring',
-  },
-  'features.monitoring.description': {
-    it: 'Controllo in tempo reale con alert e notifiche personalizzate',
-    en: 'Real-time control with customized alerts and notifications',
-  },
-  // Workflow Section
-  'workflow.title': {
-    it: 'Come funziona',
-    en: 'How it works',
-  },
-  'workflow.subtitle': {
-    it: 'Il processo in quattro semplici passaggi',
-    en: 'The process in four simple steps',
-  },
-  'workflow.step1.title': {
-    it: 'Registrati e compila il profilo',
-    en: 'Register and complete your profile',
-  },
-  'workflow.step1.description': {
-    it: 'Scheda guidata secondo il tuo ruolo',
-    en: 'Guided form according to your role',
-  },
-  'workflow.step2.title': {
-    it: 'Onboarding personalizzato',
-    en: 'Personalized onboarding',
-  },
-  'workflow.step2.description': {
-    it: 'Per individuare la tipologia di studio LCA/EPD che risponde alle proprie esigenze',
-    en: 'To identify the type of LCA/EPD study that meets your needs',
-  },
-  'workflow.step3.title': {
-    it: 'Match automatico & firma contratto',
-    en: 'Automatic match & contract signature',
-  },
-  'workflow.step3.description': {
-    it: 'Nessun contatto diretto fino alla selezione',
-    en: 'No direct contact until selection',
-  },
-  'workflow.step4.title': {
-    it: 'Lavora in uno spazio digitale condiviso',
-    en: 'Work in a shared digital space',
-  },
-  'workflow.step4.description': {
-    it: 'Con scadenze, documenti, chat e tracciamento',
-    en: 'With deadlines, documents, chat and tracking',
-  },
-  // Benefits section
-  'benefits.title': {
-    it: 'Vantaggi per ciascun target',
-    en: 'Benefits for each target',
-  },
-  'benefits.subtitle': {
-    it: 'Scopri i benefici specifici per il tuo ruolo',
-    en: 'Discover the specific benefits for your role',
-  },
-  'benefits.companies.title': {
-    it: 'Aziende',
-    en: 'Companies',
-  },
-  'benefits.companies.benefit1': {
-    it: 'Risparmio di tempo e costi',
-    en: 'Time and cost savings',
-  },
-  'benefits.companies.benefit2': {
-    it: 'Accesso a consulenti verificati e matching istantaneo',
-    en: 'Access to verified consultants and instant matching',
-  },
-  'benefits.companies.benefit3': {
-    it: 'Nessun errore iniziale: onboarding tecnico accurato',
-    en: 'No initial errors: accurate technical onboarding',
-  },
-  'benefits.consultants.title': {
-    it: 'Consulenti',
-    en: 'Consultants',
-  },
-  'benefits.consultants.benefit1': {
-    it: 'Opportunità già profilate, senza spese di marketing',
-    en: 'Pre-profiled opportunities, without marketing expenses',
-  },
-  'benefits.consultants.benefit2': {
-    it: 'Caricamento CV e selezione dei settori di competenza',
-    en: 'CV upload and selection of areas of expertise',
-  },
-  'benefits.consultants.benefit3': {
-    it: 'Area personale, rating, e gestione progetti semplificata',
-    en: 'Personal area, rating, and simplified project management',
-  },
-  'benefits.certification.title': {
-    it: 'Enti di certificazione',
-    en: 'Certification bodies',
-  },
-  'benefits.certification.benefit1': {
-    it: 'Coinvolgimento anticipato nel flusso',
-    en: 'Early involvement in the flow',
-  },
-  'benefits.certification.benefit2': {
-    it: 'Dossier clienti ordinati e standardizzati',
-    en: 'Organized and standardized client dossiers',
-  },
-  'benefits.certification.benefit3': {
-    it: 'Sincronizzazione automatica delle fasi',
-    en: 'Automatic synchronization of phases',
-  },
-  // CTA Section
-  'cta.title': {
-    it: 'Inizia subito. La sostenibilità non può aspettare.',
-    en: 'Start now. Sustainability cannot wait.',
-  },
-  'cta.subtitle': {
-    it: 'Unisciti al marketplace che sta rivoluzionando il modo in cui aziende, consulenti ed enti di certificazione collaborano per un futuro sostenibile.',
-    en: 'Join the marketplace that is revolutionizing how companies, consultants, and certification bodies collaborate for a sustainable future.',
-  },
-  'cta.appointment.title': {
-    it: 'Prenota il tuo primo appuntamento gratuito',
-    en: 'Schedule your free first appointment',
-  },
-  'cta.appointment.description': {
-    it: '30 minuti gratuiti per tutte le aziende che si iscrivono',
-    en: '30 free minutes for all companies that sign up',
-  },
-  'cta.book': {
-    it: 'Prenota ora',
-    en: 'Book now',
-  },
-  // Footer
-  'footer.slogan': {
-    it: 'Il marketplace della sostenibilità che connette aziende, consulenti ed enti di certificazione.',
-    en: 'The sustainability marketplace that connects companies, consultants and certification bodies.',
-  },
-  'footer.about': {
-    it: 'Chi siamo',
-    en: 'About us',
-  },
-  'footer.story': {
-    it: 'La nostra storia',
-    en: 'Our story',
-  },
-  'footer.team': {
-    it: 'Team',
-    en: 'Team',
-  },
-  'footer.partners': {
-    it: 'Partner',
-    en: 'Partners',
-  },
-  'footer.contacts': {
-    it: 'Contatti',
-    en: 'Contacts',
-  },
-  'footer.support': {
-    it: 'Supporto',
-    en: 'Support',
-  },
-  'footer.legal': {
-    it: 'Legale',
-    en: 'Legal',
-  },
-  'footer.privacy': {
-    it: 'Privacy Policy',
-    en: 'Privacy Policy',
-  },
-  'footer.terms': {
-    it: 'Termini e Condizioni',
-    en: 'Terms and Conditions',
-  },
-  'footer.cookies': {
-    it: 'Cookie Policy',
-    en: 'Cookie Policy',
-  },
-  'footer.rights': {
-    it: 'Tutti i diritti riservati.',
-    en: 'All rights reserved.',
-  },
+  en: {
+    'nav.about': 'About Us',
+    'nav.features': 'Features',
+    'nav.workflow': 'How it Works',
+    'nav.benefits': 'Benefits',
+    'nav.contact': 'Contact',
+    'hero.introText': 'The first marketplace dedicated to EPD drafting that connects companies, consultants and certification bodies, with a "zero re-work" approach',
+    'hero.waitingListCta': 'Yes, I want priority access',
+    'hero.signupCompany': 'Sign up as a company',
+    'hero.signupConsultant': 'Sign up as a consultant',
+    'hero.signupCertification': 'Sign up as a certification body',
+    'hero.platformDescription': 'The dashboard that connects, simplifies and speeds up the certification process.',
+    'cta.appointment.title': 'Book your first free appointment now',
+    'cta.book': 'Book now',
+    'features.title': 'Features',
+    'workflow.title': 'How it Works',
+    'benefits.title': 'Benefits',
+    'benefits.forCompanies': 'For companies',
+    'benefits.forConsultants': 'For consultants',
+    'benefits.forCertification': 'For certification bodies',
+    'footer.slogan': 'A single environment to connect companies, consultants and certification bodies',
+    'footer.about': 'About Us',
+    'footer.story': 'Our Story',
+    'footer.team': 'The Team',
+    'footer.partners': 'Partners',
+    'footer.contacts': 'Contacts',
+    'footer.support': 'Support',
+    'footer.legal': 'Legal',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms and Conditions',
+    'footer.cookies': 'Cookie Policy',
+    'footer.rights': 'All rights reserved.',
+    'waitingList.title': 'Join the waiting list',
+    'waitingList.description': 'Enter your details to get priority access to the platform',
+    'waitingList.firstName': 'First Name*',
+    'waitingList.lastName': 'Last Name*',
+    'waitingList.email': 'Email*',
+    'waitingList.organizationType': 'Organization Type*',
+    'waitingList.organizationName': 'Organization Name',
+    'waitingList.firstNamePlaceholder': 'Enter your first name',
+    'waitingList.lastNamePlaceholder': 'Enter your last name',
+    'waitingList.emailPlaceholder': 'example@domain.com',
+    'waitingList.selectOrganizationType': 'Select organization type',
+    'waitingList.company': 'Company',
+    'waitingList.consultant': 'Consultant',
+    'waitingList.certificationBody': 'Certification Body',
+    'waitingList.organizationNamePlaceholder': 'Enter organization name',
+    'waitingList.cancel': 'Cancel',
+    'waitingList.submit': 'Join',
+  }
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+// Language provider component
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // State to hold the current language
+  const [language, setLanguage] = useState<'it' | 'en'>('it');
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('it');
-
-  const t = (key: string): string => {
-    if (!translations[key]) {
-      console.warn(`No translation found for key: ${key}`);
-      return key;
-    }
-    return translations[key][language];
+  // Function to translate text
+  const t = (key: string) => {
+    return translations[language][key] || key;
   };
 
+  useEffect(() => {
+    // Get the language from localStorage
+    const storedLanguage = localStorage.getItem('language') as 'it' | 'en' | null;
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    } else {
+      // Set the language to the browser language if no language is stored
+      const browserLanguage = navigator.language.substring(0, 2) as 'it' | 'en';
+      setLanguage(browserLanguage === 'it' ? 'it' : 'en');
+    }
+  }, []);
+
+  useEffect(() => {
+    // Store the language in localStorage
+    localStorage.setItem('language', language);
+  }, [language]);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, translations }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
 };
 
+// Custom hook to use the language context
 export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+  return useContext(LanguageContext);
 };
