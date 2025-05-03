@@ -1,34 +1,16 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CalendarIcon } from "lucide-react";
 import Logo from "./Logo";
 import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
-import { cn } from "@/lib/utils";
 import WaitingListDialog from "./WaitingListDialog";
 
 const HeroSection = () => {
   const [waitingListDialogOpen, setWaitingListDialogOpen] = useState(false);
-  const [date, setDate] = useState<Date>();
   const { t } = useLanguage();
 
   const handleWaitingListClick = () => {
     setWaitingListDialogOpen(true);
-  };
-
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate);
-    if (selectedDate) {
-      // Here you could trigger an API call to book the appointment
-      console.log(`Appointment booked for ${format(selectedDate, "PPP")}`);
-    }
   };
 
   return (
@@ -45,7 +27,7 @@ const HeroSection = () => {
               <Logo size="lg" className="inline-block" />
             </div>
             <p className="text-xl md:text-2xl font-medium text-sustanet-darkText mb-8 leading-relaxed">
-              {t('hero.introText')}
+              La prima piattaforma integrata per la gestione strutturata dell'intero processo di redazione dell'EPD che connette aziende, consulenti ed enti di certificazione, con approccio "zero re-work"
             </p>
             
             <div className="mb-8">
@@ -55,38 +37,6 @@ const HeroSection = () => {
               >
                 {t('hero.waitingListCta')}
               </Button>
-            </div>
-            
-            <div className="text-center bg-white rounded-xl p-8 shadow-sm mx-auto border border-gray-100 animate-delayed animate-fade-in mt-8 max-w-md" style={{ "--delay": "300ms" } as React.CSSProperties}>
-              <h3 className="text-xl font-bold mb-5 text-sustanet-darkText">{t('cta.appointment.title')}</h3>
-              
-              <div className="flex justify-center">
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      className="text-sustanet-primary border-sustanet-primary hover:bg-sustanet-primary hover:text-white transition-colors duration-300 flex items-center gap-2 mx-auto"
-                    >
-                      <CalendarIcon className="h-4 w-4" />
-                      {date ? format(date, "PPP") : t('cta.book')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="center">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={handleDateSelect}
-                      initialFocus
-                      className={cn("p-3 pointer-events-auto")}
-                      disabled={(date) => 
-                        date < new Date() || // Past dates
-                        date.getDay() === 0 || // Sundays
-                        date.getDay() === 6    // Saturdays
-                      }
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
             </div>
             
             <p className="text-lg text-sustanet-darkText/80 italic mt-4 text-center">
