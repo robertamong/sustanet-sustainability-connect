@@ -1,4 +1,3 @@
-
 import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -52,12 +51,12 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
     defaultValues: {
       epdDifficulties: [],
       clientAcquisitionChannels: [],
-      consent: false,
+      consent: false as any, // Using 'any' to bypass the type check, will be validated by Zod
     },
   });
 
-  const epdDifficultiesArray = form.watch("epdDifficulties") || [];
-  const clientAcquisitionChannelsArray = form.watch("clientAcquisitionChannels") || [];
+  const epdDifficultiesArray = form.watch("epdDifficulties");
+  const clientAcquisitionChannelsArray = form.watch("clientAcquisitionChannels");
 
   return (
     <Form {...form}>
@@ -173,7 +172,7 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
                     <FormItem key={item.id} className="flex flex-row items-start space-x-3 space-y-0">
                       <FormControl>
                         <Checkbox
-                          checked={epdDifficultiesArray.includes(item.id)}
+                          checked={epdDifficultiesArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
                             const currentValues = form.getValues("epdDifficulties") || [];
                             const newValues = checked
@@ -192,7 +191,7 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
             )}
           />
 
-          {epdDifficultiesArray.includes("other") && (
+          {epdDifficultiesArray?.includes("other") && (
             <FormField
               control={form.control}
               name="otherEpdDifficulties"
@@ -232,7 +231,7 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
                     <FormItem key={item.id} className="flex flex-row items-start space-x-3 space-y-0">
                       <FormControl>
                         <Checkbox
-                          checked={clientAcquisitionChannelsArray.includes(item.id)}
+                          checked={clientAcquisitionChannelsArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
                             const currentValues = form.getValues("clientAcquisitionChannels") || [];
                             const newValues = checked
@@ -251,7 +250,7 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
             )}
           />
 
-          {clientAcquisitionChannelsArray.includes("other") && (
+          {clientAcquisitionChannelsArray?.includes("other") && (
             <FormField
               control={form.control}
               name="otherClientAcquisitionChannels"
@@ -585,4 +584,3 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
 };
 
 export default ConsultantSurvey;
-
