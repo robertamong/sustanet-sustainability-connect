@@ -14,7 +14,7 @@ const WorkflowSection = () => {
       title: t('workflow.step1.title'),
       description: t('workflow.step1.description'),
       delay: "0ms",
-      image: "/lovable-uploads/4e33ee64-9abc-48c1-868e-b763d73e99a5.png"
+      image: "/lovable-uploads/5e656f62-64a8-4767-906d-db3c2a06623d.png"
     },
     {
       icon: <Settings className="w-10 h-10 text-sustanet-primary" />,
