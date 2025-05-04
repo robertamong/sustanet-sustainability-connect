@@ -1,6 +1,6 @@
 
 import React from "react";
-import { User, Settings, Package, Monitor } from "lucide-react";
+import { User, Briefcase, Users, Monitor } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -17,25 +17,25 @@ const WorkflowSection = () => {
       image: "/lovable-uploads/5e656f62-64a8-4767-906d-db3c2a06623d.png"
     },
     {
-      icon: <Settings className="w-10 h-10 text-sustanet-primary" />,
+      icon: <Users className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step2.title'),
       description: t('workflow.step2.description'),
       delay: "200ms",
-      image: "/workflow-onboarding.jpg"
+      image: "/lovable-uploads/954c639e-edf0-4555-a5d9-aa731f30a2f6.png"
     },
     {
-      icon: <Package className="w-10 h-10 text-sustanet-primary" />,
+      icon: <Briefcase className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step3.title'),
       description: t('workflow.step3.description'),
       delay: "400ms",
-      image: "/workflow-project.jpg"
+      image: "/lovable-uploads/3c6d6f6c-c284-4d0c-870d-5bdac9971d26.png"
     },
     {
       icon: <Monitor className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step4.title'),
       description: t('workflow.step4.description'),
       delay: "600ms",
-      image: "/workflow-monitoring.jpg"
+      image: "/lovable-uploads/a43230c1-8613-4978-ba82-9c8f111b50c4.png"
     },
   ];
 
