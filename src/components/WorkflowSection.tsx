@@ -2,9 +2,11 @@
 import React from "react";
 import { User, Settings, Package, Monitor } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const WorkflowSection = () => {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   
   const steps = [
     {
@@ -12,7 +14,7 @@ const WorkflowSection = () => {
       title: t('workflow.step1.title'),
       description: t('workflow.step1.description'),
       delay: "0ms",
-      image: "/workflow-registration.jpg"
+      image: "/lovable-uploads/4e33ee64-9abc-48c1-868e-b763d73e99a5.png"
     },
     {
       icon: <Settings className="w-10 h-10 text-sustanet-primary" />,
@@ -59,7 +61,7 @@ const WorkflowSection = () => {
                 <img 
                   src={step.image} 
                   alt={t(`workflow.step${index + 1}.title`)} 
-                  className="w-full h-64 object-cover object-center"
+                  className="w-full h-64 object-contain bg-white object-center p-4"
                 />
               </div>
 
@@ -78,7 +80,7 @@ const WorkflowSection = () => {
                 </div>
                 <p className="text-gray-600 text-lg">{step.description}</p>
                 
-                {index < steps.length - 1 && (
+                {index < steps.length - 1 && !isMobile && (
                   <div className="hidden md:flex justify-center mt-6">
                     <div className={`w-12 h-12 flex items-center justify-center ${index % 2 !== 0 ? 'rotate-180' : ''}`}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sustanet-primary">
