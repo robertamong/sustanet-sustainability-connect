@@ -17,11 +17,12 @@ import {
 } from "@/components/ui/form";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Modify the schema to handle empty arrays properly - we'll validate later
 const certificationSurveySchema = z.object({
   orgSize: z.enum(["small", "medium", "large"]),
-  verificationChallenges: z.array(z.string()).nonempty({ message: "Seleziona almeno un'opzione" }),
+  verificationChallenges: z.array(z.string()).min(1, { message: "Seleziona almeno un'opzione" }),
   otherVerificationChallenges: z.string().optional(),
-  companyAcquisitionChannels: z.array(z.string()).nonempty({ message: "Seleziona almeno un'opzione" }),
+  companyAcquisitionChannels: z.array(z.string()).min(1, { message: "Seleziona almeno un'opzione" }),
   otherCompanyAcquisitionChannels: z.string().optional(),
   platformInfoUtilityRating: z.enum(["1", "2", "3", "4", "5"]),
   platformClientAcquisitionRating: z.enum(["1", "2", "3", "4", "5"]),
@@ -129,7 +130,7 @@ const CertificationSurvey: React.FC<CertificationSurveyProps> = ({ onSubmit, onC
                         <Checkbox
                           checked={verificationChallengesArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
-                            const currentValues = form.getValues("verificationChallenges") || [];
+                            const currentValues = [...(form.getValues("verificationChallenges") || [])];
                             const newValues = checked
                               ? [...currentValues, item.id]
                               : currentValues.filter((value) => value !== item.id);
@@ -188,7 +189,7 @@ const CertificationSurvey: React.FC<CertificationSurveyProps> = ({ onSubmit, onC
                         <Checkbox
                           checked={companyAcquisitionChannelsArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
-                            const currentValues = form.getValues("companyAcquisitionChannels") || [];
+                            const currentValues = [...(form.getValues("companyAcquisitionChannels") || [])];
                             const newValues = checked
                               ? [...currentValues, item.id]
                               : currentValues.filter((value) => value !== item.id);

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Update schema to use min(1) instead of nonempty()
 const companySurveySchema = z.object({
   companySize: z.enum(["small", "medium", "large"]),
   country: z.string().min(1, { message: "Il paese è obbligatorio" }),
@@ -24,9 +25,9 @@ const companySurveySchema = z.object({
   role: z.enum(["management", "technical", "commercial"]),
   sustainabilityImportance: z.enum(["1", "2", "3", "4", "5"]),
   certificationImportance: z.enum(["1", "2", "3", "4", "5"]),
-  epdChallenges: z.array(z.string()).nonempty({ message: "Seleziona almeno un'opzione" }),
+  epdChallenges: z.array(z.string()).min(1, { message: "Seleziona almeno un'opzione" }),
   otherEpdChallenges: z.string().optional(),
-  consultantChannels: z.array(z.string()).nonempty({ message: "Seleziona almeno un'opzione" }),
+  consultantChannels: z.array(z.string()).min(1, { message: "Seleziona almeno un'opzione" }),
   otherConsultantChannels: z.string().optional(),
   contactEaseRating: z.enum(["1", "2", "3", "4", "5"]),
   updateFrequency: z.enum(["multipleWeekly", "weekly", "biweekly", "monthly", "quarterly", "other"]),
@@ -295,7 +296,7 @@ const CompanySurvey: React.FC<CompanySurveyProps> = ({ onSubmit, onCancel }) => 
                         <Checkbox
                           checked={epdChallengesArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
-                            const currentValues = form.getValues("epdChallenges") || [];
+                            const currentValues = [...(form.getValues("epdChallenges") || [])];
                             const newValues = checked
                               ? [...currentValues, item.id]
                               : currentValues.filter((value) => value !== item.id);
@@ -354,7 +355,7 @@ const CompanySurvey: React.FC<CompanySurveyProps> = ({ onSubmit, onCancel }) => 
                         <Checkbox
                           checked={consultantChannelsArray?.includes(item.id)}
                           onCheckedChange={(checked) => {
-                            const currentValues = form.getValues("consultantChannels") || [];
+                            const currentValues = [...(form.getValues("consultantChannels") || [])];
                             const newValues = checked
                               ? [...currentValues, item.id]
                               : currentValues.filter((value) => value !== item.id);
