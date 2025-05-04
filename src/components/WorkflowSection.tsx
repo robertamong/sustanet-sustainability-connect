@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FileText, UserCheck, FolderOpen, ChartLine } from "lucide-react";
+import { User, Settings, Package, Monitor } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const WorkflowSection = () => {
@@ -8,28 +8,28 @@ const WorkflowSection = () => {
   
   const steps = [
     {
-      icon: <UserCheck className="w-10 h-10 text-sustanet-primary" />,
+      icon: <User className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step1.title'),
       description: t('workflow.step1.description'),
       delay: "0ms",
       image: "/workflow-registration.jpg"
     },
     {
-      icon: <FileText className="w-10 h-10 text-sustanet-primary" />,
+      icon: <Settings className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step2.title'),
       description: t('workflow.step2.description'),
       delay: "200ms",
       image: "/workflow-onboarding.jpg"
     },
     {
-      icon: <FolderOpen className="w-10 h-10 text-sustanet-primary" />,
+      icon: <Package className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step3.title'),
       description: t('workflow.step3.description'),
       delay: "400ms",
       image: "/workflow-project.jpg"
     },
     {
-      icon: <ChartLine className="w-10 h-10 text-sustanet-primary" />,
+      icon: <Monitor className="w-10 h-10 text-sustanet-primary" />,
       title: t('workflow.step4.title'),
       description: t('workflow.step4.description'),
       delay: "600ms",
