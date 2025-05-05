@@ -41,9 +41,6 @@ const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center space-x-6">
-          <a href="#" className="text-sustanet-darkText hover:text-sustanet-primary transition-colors">
-            HOME
-          </a>
           <div className="flex items-center space-x-1 text-sustanet-darkText">
             <Globe size={16} />
             <select
@@ -73,13 +70,6 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg">
           <div className="flex flex-col p-4 space-y-4">
-            <a
-              href="#"
-              className="text-sustanet-darkText hover:text-sustanet-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              HOME
-            </a>
             <div className="flex items-center border border-gray-300 rounded p-2">
               <Globe size={16} className="mr-2" />
               <select

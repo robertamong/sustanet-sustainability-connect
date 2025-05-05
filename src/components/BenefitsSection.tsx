@@ -1,6 +1,7 @@
 
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Building, Briefcase, Building2 } from "lucide-react";
 
 const BenefitsSection = () => {
   const { t } = useLanguage();
@@ -8,7 +9,8 @@ const BenefitsSection = () => {
   const targetBenefits = [
     {
       color: "bg-sustanet-blue",
-      title: "🏢 " + t('benefits.companies.title'),
+      title: t('benefits.companies.title'),
+      icon: <Building className="w-10 h-10 text-white" />,
       benefits: [
         t('benefits.companies.benefit1'),
         t('benefits.companies.benefit2'),
@@ -18,7 +20,8 @@ const BenefitsSection = () => {
     },
     {
       color: "bg-sustanet-orange",
-      title: "👩‍💼 " + t('benefits.consultants.title'),
+      title: t('benefits.consultants.title'),
+      icon: <Briefcase className="w-10 h-10 text-white" />,
       benefits: [
         t('benefits.consultants.benefit1'),
         t('benefits.consultants.benefit2'),
@@ -28,7 +31,8 @@ const BenefitsSection = () => {
     },
     {
       color: "bg-sustanet-purple",
-      title: "🏛 " + t('benefits.certification.title'),
+      title: t('benefits.certification.title'),
+      icon: <Building2 className="w-10 h-10 text-white" />,
       benefits: [
         t('benefits.certification.benefit1'),
         t('benefits.certification.benefit2'),
@@ -56,7 +60,10 @@ const BenefitsSection = () => {
               style={{ "--delay": target.delay } as React.CSSProperties}
             >
               <div className={`${target.color} p-4 text-center`}>
-                <h3 className="text-xl font-bold text-white">{target.title}</h3>
+                <h3 className="text-xl font-bold text-white flex items-center justify-center gap-2">
+                  {target.icon}
+                  {target.title}
+                </h3>
               </div>
               <div className="p-6">
                 <ul className="space-y-3">

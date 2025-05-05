@@ -79,16 +79,6 @@ const WorkflowSection = () => {
                   </h3>
                 </div>
                 <p className="text-gray-600 text-lg">{step.description}</p>
-                
-                {index < steps.length - 1 && !isMobile && (
-                  <div className="hidden md:flex justify-center mt-6">
-                    <div className={`w-12 h-12 flex items-center justify-center ${index % 2 !== 0 ? 'rotate-180' : ''}`}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sustanet-primary">
-                        <path d="M12 5v14M19 12l-7 7-7-7"/>
-                      </svg>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           ))}
