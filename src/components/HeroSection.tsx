@@ -29,14 +29,14 @@ const HeroSection = () => {
               <Logo size="lg" className="inline-block" />
             </div>
             <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <div className={isMobile ? "order-2" : "order-1"}>
+              <div className="order-1 flex-grow">
                 <p className="text-xl md:text-2xl font-medium text-sustanet-darkText mb-8 leading-relaxed">
                   {language === "it" 
                     ? "La prima piattaforma integrata per la gestione strutturata dell'intero processo di redazione dell'EPD che connette aziende, consulenti ed enti di certificazione, con approccio \"zero re-work\""
                     : "The first integrated platform for structured management of the entire EPD writing process that connects companies, consultants and certification bodies, with \"zero re-work\" approach"}
                 </p>
               </div>
-              <div className={`${isMobile ? "order-1" : "order-2"} flex-shrink-0`}>
+              <div className="order-2 flex-shrink-0">
                 <img 
                   src="/lovable-uploads/4ec53213-3df9-4794-88f6-5bc23e7b612d.png" 
                   alt="Sustanet Platform" 
