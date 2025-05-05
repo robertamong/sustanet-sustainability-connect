@@ -8,7 +8,7 @@ const BenefitsSection = () => {
   
   const targetBenefits = [
     {
-      color: "bg-sustanet-blue",
+      color: "bg-sustanet-primary",
       title: t('benefits.companies.title'),
       icon: <Building className="w-10 h-10 text-white" />,
       benefits: [
@@ -19,7 +19,7 @@ const BenefitsSection = () => {
       delay: "0ms",
     },
     {
-      color: "bg-sustanet-orange",
+      color: "bg-green-600",
       title: t('benefits.consultants.title'),
       icon: <Briefcase className="w-10 h-10 text-white" />,
       benefits: [
@@ -30,7 +30,7 @@ const BenefitsSection = () => {
       delay: "200ms",
     },
     {
-      color: "bg-sustanet-purple",
+      color: "bg-green-700",
       title: t('benefits.certification.title'),
       icon: <Building2 className="w-10 h-10 text-white" />,
       benefits: [
