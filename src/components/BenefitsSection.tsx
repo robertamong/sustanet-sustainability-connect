@@ -30,7 +30,7 @@ const BenefitsSection = () => {
       delay: "200ms",
     },
     {
-      color: "bg-green-700",
+      color: "bg-green-300",
       title: t('benefits.certification.title'),
       icon: <Building2 className="w-10 h-10 text-white" />,
       benefits: [
