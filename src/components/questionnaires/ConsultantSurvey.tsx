@@ -45,13 +45,14 @@ const ConsultantSurvey: React.FC<ConsultantSurveyProps> = ({ onSubmit, onCancel 
 		defaultValues: {
 			epdDifficulties: [],
 			clientAcquisitionChannels: [],
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			consent: false as any // Using 'any' to bypass the type check, will be validated by Zod
 		}
 	});
 
 	const epdDifficultiesArray = form.watch("epdDifficulties");
 	const clientAcquisitionChannelsArray = form.watch("clientAcquisitionChannels");
-	x;
+
 	return (
 		<div className="max-h-[80vh] overflow-y-auto px-4">
 			<Form {...form}>

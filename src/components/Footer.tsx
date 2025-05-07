@@ -53,7 +53,7 @@ const Footer = () => {
 								</a>
 							</li>
 							<li>
-								<a href="#" className="text-gray-300 hover:text-white flex items-center gap-2 hover:text-white transition-colors">
+								<a href="#" className="text-gray-300 flex items-center gap-2 hover:text-white transition-colors">
 									<Linkedin size={18} />
 									<span>LinkedIn</span>
 								</a>
